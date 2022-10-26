@@ -1,0 +1,931 @@
+{
+  "contractName": "Customer",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "id_",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        }
+      ],
+      "name": "CustomerAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "id_",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        }
+      ],
+      "name": "CustomerDataUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "id_",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "customerName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "dataHash",
+          "type": "string"
+        }
+      ],
+      "name": "DataHashUpdated",
+      "type": "event"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"id_\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"CustomerAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"id_\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"email\",\"type\":\"string\"}],\"name\":\"CustomerDataUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"id_\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"customerName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"}],\"name\":\"DataHashUpdated\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Customer.sol\":\"Customer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Customer.sol\":{\"keccak256\":\"0x2d3d6e8a22a032ddd80a860569ebe2ce39c10c19d6feaa20e2603dce304f064e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bc22c28880ef810840b01ff5e44a1ac3b295880b59a278673f31f7cf104a0ac0\",\"dweb:/ipfs/QmSmg5xuQbpvsJTiGXsZdrEcmZmkNPJ72zoMuzFxAr9FR7\"]},\"project:/contracts/Types.sol\":{\"keccak256\":\"0x9a6d7c03e067dc09795dc332de6e8ce2eebf9fe1a6bc8f49abdda8a90c773c6a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ad6d1cfb9d2678ff781a6ec28ebb9e80e98b1f25721d7b1a6c72623f67dd3936\",\"dweb:/ipfs/QmbMEvgBgvBfbLc3vcbxPonKcaFyjGXyhnV4qY9BTzJ5cJ\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122031082c49ee32ed254c0a13e77549d7b1e8047a0730e6923f0ffdd016617b95fa64736f6c63430008070033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122031082c49ee32ed254c0a13e77549d7b1e8047a0730e6923f0ffdd016617b95fa64736f6c63430008070033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "129:606:1:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "129:606:1:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma experimental ABIEncoderV2;\r\npragma solidity >=0.4.25 <0.9.0;\r\n\r\nimport \"./Types.sol\";\r\n\r\ncontract Customer{\r\n    \r\n    address[] internal customerList;\r\n    mapping(address=>Types.Customer) internal customers;\r\n\r\n    //events\r\n    event CustomerAdded(address id_, string name, string email);\r\n    event CustomerDataUpdated(address id_, string name, string email);\r\n    event DataHashUpdated(address id_, string customerName, string dataHash);\r\n\r\n    function addCustomer(Types.Customer memory customer_) internal {\r\n        customers[customer_.id_] = customer_;\r\n        customerList.push(customer_.id_);\r\n        emit CustomerAdded(customer_.id_, customer_.name, customer_.email);\r\n    }\r\n\r\n\r\n}",
+  "sourcePath": "D:\\Blockchain_project\\blockchainKYC\\contracts\\Customer.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Customer.sol",
+    "exportedSymbols": {
+      "Customer": [
+        141
+      ],
+      "Types": [
+        512
+      ]
+    },
+    "id": 142,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 76,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:33:1"
+      },
+      {
+        "id": 77,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".25",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "68:32:1"
+      },
+      {
+        "absolutePath": "project:/contracts/Types.sol",
+        "file": "./Types.sol",
+        "id": 78,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 142,
+        "sourceUnit": 513,
+        "src": "104:21:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 141,
+        "linearizedBaseContracts": [
+          141
+        ],
+        "name": "Customer",
+        "nameLocation": "138:8:1",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 81,
+            "mutability": "mutable",
+            "name": "customerList",
+            "nameLocation": "178:12:1",
+            "nodeType": "VariableDeclaration",
+            "scope": 141,
+            "src": "159:31:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 79,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "159:7:1",
+                "stateMutability": "nonpayable",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 80,
+              "nodeType": "ArrayTypeName",
+              "src": "159:9:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 86,
+            "mutability": "mutable",
+            "name": "customers",
+            "nameLocation": "239:9:1",
+            "nodeType": "VariableDeclaration",
+            "scope": 141,
+            "src": "197:51:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Customer_$472_storage_$",
+              "typeString": "mapping(address => struct Types.Customer)"
+            },
+            "typeName": {
+              "id": 85,
+              "keyType": {
+                "id": 82,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "205:7:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "197:32:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Customer_$472_storage_$",
+                "typeString": "mapping(address => struct Types.Customer)"
+              },
+              "valueType": {
+                "id": 84,
+                "nodeType": "UserDefinedTypeName",
+                "pathNode": {
+                  "id": 83,
+                  "name": "Types.Customer",
+                  "nodeType": "IdentifierPath",
+                  "referencedDeclaration": 472,
+                  "src": "214:14:1"
+                },
+                "referencedDeclaration": 472,
+                "src": "214:14:1",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Customer_$472_storage_ptr",
+                  "typeString": "struct Types.Customer"
+                }
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "anonymous": false,
+            "id": 94,
+            "name": "CustomerAdded",
+            "nameLocation": "277:13:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 93,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 88,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "id_",
+                  "nameLocation": "299:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 94,
+                  "src": "291:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 87,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "291:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 90,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "311:4:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 94,
+                  "src": "304:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 89,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "304:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 92,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "email",
+                  "nameLocation": "324:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 94,
+                  "src": "317:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 91,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "317:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "290:40:1"
+            },
+            "src": "271:60:1"
+          },
+          {
+            "anonymous": false,
+            "id": 102,
+            "name": "CustomerDataUpdated",
+            "nameLocation": "343:19:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 96,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "id_",
+                  "nameLocation": "371:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 102,
+                  "src": "363:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 95,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "363:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 98,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "383:4:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 102,
+                  "src": "376:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 97,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "376:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 100,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "email",
+                  "nameLocation": "396:5:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 102,
+                  "src": "389:12:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 99,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "389:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:40:1"
+            },
+            "src": "337:66:1"
+          },
+          {
+            "anonymous": false,
+            "id": 110,
+            "name": "DataHashUpdated",
+            "nameLocation": "415:15:1",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 109,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 104,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "id_",
+                  "nameLocation": "439:3:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "431:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 103,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "431:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 106,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "customerName",
+                  "nameLocation": "451:12:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "444:19:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 105,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "444:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 108,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "dataHash",
+                  "nameLocation": "472:8:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 110,
+                  "src": "465:15:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 107,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "465:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "430:51:1"
+            },
+            "src": "409:73:1"
+          },
+          {
+            "body": {
+              "id": 139,
+              "nodeType": "Block",
+              "src": "553:175:1",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 121,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 116,
+                        "name": "customers",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 86,
+                        "src": "564:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Customer_$472_storage_$",
+                          "typeString": "mapping(address => struct Types.Customer storage ref)"
+                        }
+                      },
+                      "id": 119,
+                      "indexExpression": {
+                        "expression": {
+                          "id": 117,
+                          "name": "customer_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "574:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                            "typeString": "struct Types.Customer memory"
+                          }
+                        },
+                        "id": 118,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "id_",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 465,
+                        "src": "574:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "564:24:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Customer_$472_storage",
+                        "typeString": "struct Types.Customer storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 120,
+                      "name": "customer_",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 113,
+                      "src": "591:9:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                        "typeString": "struct Types.Customer memory"
+                      }
+                    },
+                    "src": "564:36:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Customer_$472_storage",
+                      "typeString": "struct Types.Customer storage ref"
+                    }
+                  },
+                  "id": 122,
+                  "nodeType": "ExpressionStatement",
+                  "src": "564:36:1"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 126,
+                          "name": "customer_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "629:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                            "typeString": "struct Types.Customer memory"
+                          }
+                        },
+                        "id": 127,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "id_",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 465,
+                        "src": "629:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "id": 123,
+                        "name": "customerList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 81,
+                        "src": "611:12:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 125,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "src": "611:17:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_address_$dyn_storage_ptr_$_t_address_$returns$__$bound_to$_t_array$_t_address_$dyn_storage_ptr_$",
+                        "typeString": "function (address[] storage pointer,address)"
+                      }
+                    },
+                    "id": 128,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "611:32:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 129,
+                  "nodeType": "ExpressionStatement",
+                  "src": "611:32:1"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 131,
+                          "name": "customer_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "673:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                            "typeString": "struct Types.Customer memory"
+                          }
+                        },
+                        "id": 132,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "id_",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 465,
+                        "src": "673:13:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 133,
+                          "name": "customer_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "688:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                            "typeString": "struct Types.Customer memory"
+                          }
+                        },
+                        "id": 134,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "name",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 459,
+                        "src": "688:14:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      },
+                      {
+                        "expression": {
+                          "id": 135,
+                          "name": "customer_",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 113,
+                          "src": "704:9:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                            "typeString": "struct Types.Customer memory"
+                          }
+                        },
+                        "id": 136,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "email",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 461,
+                        "src": "704:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 130,
+                      "name": "CustomerAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 94,
+                      "src": "659:13:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (address,string memory,string memory)"
+                      }
+                    },
+                    "id": 137,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "659:61:1",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 138,
+                  "nodeType": "EmitStatement",
+                  "src": "654:66:1"
+                }
+              ]
+            },
+            "id": 140,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addCustomer",
+            "nameLocation": "499:11:1",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 113,
+                  "mutability": "mutable",
+                  "name": "customer_",
+                  "nameLocation": "533:9:1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 140,
+                  "src": "511:31:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Customer_$472_memory_ptr",
+                    "typeString": "struct Types.Customer"
+                  },
+                  "typeName": {
+                    "id": 112,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 111,
+                      "name": "Types.Customer",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 472,
+                      "src": "511:14:1"
+                    },
+                    "referencedDeclaration": 472,
+                    "src": "511:14:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Customer_$472_storage_ptr",
+                      "typeString": "struct Types.Customer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "510:33:1"
+            },
+            "returnParameters": {
+              "id": 115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "553:0:1"
+            },
+            "scope": 141,
+            "src": "490:238:1",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 142,
+        "src": "129:606:1",
+        "usedErrors": []
+      }
+    ],
+    "src": "33:702:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.7+commit.e28d00a7.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-10-25T14:58:22.783Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

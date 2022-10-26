@@ -1,0 +1,21 @@
+.add-sign{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: dodgerblue;
+}
+.vertical-bar{
+    width: 0.2rem;
+    height: 100%;
+    background-color: white;
+    margin-left: 45%;
+    margin-top: 50% ;
+}
+.horizontal-bar{
+    width: 0.2rem;
+    height: 100%;
+    background-color: white;
+    rotate: 90deg;
+    margin-top: -100%;
+    margin-left:43%;
+}

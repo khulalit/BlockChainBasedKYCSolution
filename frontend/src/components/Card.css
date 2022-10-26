@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+.card_front{
+    font-family: 'Space Mono', monospace;
+    width : 400px;
+    height: 200px;
+    background: linear-gradient(to right bottom, #2192FF, #52768e, #256D85, #0f354d, #06283D);
+    /* opacity: 0.6; */
+    opacity: 0.8;
+    color: white;
+    border-radius: 0.5rem;
+    box-shadow: -10px 1px 10px #aaa3a3;
+    rotate: -5deg;
+    -moz-transform: scale(0.9) skew(38deg, -18deg);
+    -webkit-transform: scale(0.9) skew(38deg, -18deg);
+    -o-transform: scale(0.9) skew(38deg, -18deg);
+    -ms-transform: scale(0.9) skew(38deg, -18deg);
+    transform: scale(0.9) skew(38deg, -18deg);
+    transition: transform 0.2s ease;
+}
+.card{
+    width: max-content;
+    height: min-content;
+    position: absolute;
+    top : 50vh;
+    right : 20%;
+}
+.card_front:hover{
+    transform: skew(0deg,0deg);
+    rotate: 0deg;
+    box-shadow: 1px 1px 10px #aaa3a3;
+    /* translate: 0 -100px; */
+}
+.custom-text{
+    letter-spacing: 0.2rem;
+    font-family:sans-serif, monospace;
+    width : 50%;
+    margin-top: 20vh;
+    margin-left : 2%;
+    
+}
+.custom-bg{
+    /* background: linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); */
+    /* background: linear-gradient(to right bottom, #2192FF, #52768e, #256D85, #0f354d, #06283D); */
+    background-color: #06283D;
+    opacity: 0.7;
+}
+.height{
+    height: 80vh;
+    
+}
+.card_numer{
+    letter-spacing: 0.2rem;
+}
