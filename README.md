@@ -50,4 +50,5 @@ Note: To be able to work with this app meta mask must be installed. Instruction 
 
 ![image](https://user-images.githubusercontent.com/52879143/211799815-f6d04723-3bf3-41d8-908b-b146f5340ce6.png)
 
+This project is done in partial fulfilment of requirements for the degree ofM.Sc. Computer Science as Minor Project Report in M.Sc. Computer Science (University of Delhi).
 
